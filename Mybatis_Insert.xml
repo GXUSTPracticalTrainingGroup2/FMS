@@ -1,0 +1,92 @@
+
+<!-- 插入生产商表 -->  
+<insert id="insertSup" parameterType="SupEntity" useGeneratedKeys="true" keyProperty="supID">  
+        INSERT INTO SUPPLIER_FORM (SUP_ID,  
+								   SUP_NAME,  
+                                   SUP_ADDRESS,  
+                                   SUP_PHONE)  
+              VALUES   	 (#{supID},  
+                          #{supName},  
+                          #{supAddress},  
+                          #{supPhone})  
+</insert>  
+
+
+<!-- 插入美食表 --> 
+<insert id="insertAttribute" parameterType="AttributeEntity" useGeneratedKeys="true" keyProperty="attributeID">  
+        INSERT INTO ATTRIBUTE_FORM (ATTRIBUTE_ID,  
+								   ATTRIBUTE_SUP_ID,  
+                                   ATTRIBUTE_ADD_ID,  
+                                   ATTRIBUTE_K_ID)  
+              VALUES   	 (#{attributeId},  
+                          #{attributeSupId},  
+                          #{attributeAddId},  
+                          #{attributeKindId})  
+</insert>  
+
+<!--插入日期表 -->
+<insert id="insertDate" parameterType="DateEntity" useGeneratedKeys="true" keyProperty="id">  
+        INSERT INTO ATTRIBUTE_FORM (ID,  
+								    PRO_DATE,  
+                                    EXP_DATE,  )  
+              VALUES   	 (#{id},  
+                          #{proDate},  
+                          #{expDate}, )  
+</insert>  
+
+
+
+<!--插入地址表 -->
+<insert id="insertAddress" parameterType="AddressEntity" useGeneratedKeys="true" keyProperty="addID">  
+        INSERT INTO ATTRIBUTE_FORM (ADD_ID,  
+								    ADDRESS,  
+                                    ADD_PHONE, )  
+              VALUES   	 (#{addID},  
+                          #{address},  
+                          #{add_phone},
+						  )  
+</insert>  
+
+
+
+<!--插入属性表 -->
+<insert id="insertAttribute" parameterType="AttributeEntity" useGeneratedKeys="true" keyProperty="attributeID">  
+        INSERT INTO ATTRIBUTE_FORM (A_ID,  
+								    PRICE,  
+                                    WEIGHT,
+									ADAPTIVE )  
+              VALUES   	 (#{addID},  
+                          #{price},  
+                          #{weight},
+						  #{adaptive}
+						  )  
+</insert>  
+
+CREATE TABLE kinds_form(k_id int not null auto_increment,
+                        price float not null,
+                        weight int not null,
+                        primary key(k_id));
+						
+						
+
+<!--插入用户表 -->
+<insert id="insertUser" parameterType="UserEntity" useGeneratedKeys="true" keyProperty="userID">  
+        INSERT INTO ATTRIBUTE_FORM (U_ID,  
+								    U_NAME,  
+                                    U_PASSWORD,
+									U_SEX,
+									U_PHONE,
+									U_MAIL,
+									U_LEVEL
+									)  
+              VALUES   	 (#{userID},  
+                          #{userName},  
+                          #{usePassword},
+						  #{userSex}
+						  #{userPhone}
+						  #{userMail}
+					      #{userLevel}
+						  )  
+</insert>  
+
+

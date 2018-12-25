@@ -1,0 +1,72 @@
+--supplier_from
+<select id="getSup" parameterType="String" resultMap="supResultMap">  
+    SELECT 		
+			   S.SUP_ID,  
+               S.SUP_NAME,  
+               S.SUP_ADDRESS,  
+               S.SUP_PHONE,  
+    FROM SUPPLIER_FORM S  
+    WHERE S.SUP_ID = #{sup_id}  
+</select>  
+
+--food_form
+<select id="getFood" parameterType="String" resultMap="foodResultMap">  
+    SELECT 		
+			   F.ID,
+			   F.SUP_ID,  
+               F.ADD_ID,  
+               F.F_ID,  
+    FROM FOOD_Form F  
+    WHERE F.ID = #{id}  
+</select>  
+
+--date_form
+<select id="getDate" parameterType="String" resultMap="dateResultMap">  
+    SELECT 		
+				D.ID,
+			    D.PRO_DATE,  
+                D.EXP_DATE,  
+    FROM 	    DATE_FORM D  
+    WHERE D.ID = #{id}  
+</select>
+
+--address_form
+<select id="getAddress" parameterType="String" resultMap="addressResultMap">  
+    SELECT 		
+				A.ADD_ID,
+			    A.ADDRESS,  
+                A.ADD_PHONE,
+				A.ADAPTIVE
+    FROM 	    ADDRESS_FORM A  
+    WHERE A.ADD_ID = #{add_id}  
+</select>
+
+
+--attribute_form
+<select id="getAttribute" parameterType="String" resultMap="attributeResultMap">  
+    SELECT 		
+				A.A_ID,
+			    A.PRICE,  
+                A.PACKAGE,
+				A.WEIGHT
+				A.ADAPTIVE
+    FROM 	    ATTRIBUTE_FORM A  
+    WHERE A.A_ID = #{a_id}  
+</select>
+
+--user_form
+<select id="getUser" parameterType="String" resultMap="userResultMap">  
+    SELECT 		
+				U.U_ID,
+			    U.U_NAME,  
+                U.U_PASSWORD,
+				U.U_SEX,
+				U.U_PHONE,
+				U.U_MAIL,
+				U.U_LEVEL,
+    FROM 	    USER U  
+    WHERE U.U_ID = #{u_id}  
+</select>
+
+
+

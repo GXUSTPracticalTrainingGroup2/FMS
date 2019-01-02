@@ -84,7 +84,7 @@ public class TestController {
  * 
  * 此方法为修改文本中的数据
  *Postman使用方法： 
- * http://localhost:8080/auto/test/editTest?testId=2&testName=水&info=值&other=你
+ * http://172.19.128.194:8080/auto/test/editTest?testId=2&testName=水&info=值&other=你
  * 
  * 
  * */

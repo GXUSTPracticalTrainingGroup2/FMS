@@ -1,8 +1,8 @@
 package com.ss.vv.ss.domain;
 
 public class User implements java.io.Serializable {
-	private int u_id,u_phone;
-	private String u_name,u_password,u_sex,u_mail,u_level;
+	private int u_id, u_phone;
+	private String u_name, u_password, u_sex, u_mail, u_level;
 	public int getU_id() {
 		return u_id;
 	}

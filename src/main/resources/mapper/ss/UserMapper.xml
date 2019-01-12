@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ss.vv.ss.mapper.IUserMapper">
+<resultMap type="com.ss.vv.ss.domain.User" id="baseUserMap">
+        <id column="u_id" jdbcType="INTEGER" property="uid" />
+		<result column="u_name" jdbcType="VARCHAR" property="uname" />
+		<result column="u_password" jdbcType="VARCHAR" property="upassword" />
+		<result column="u_sex" jdbcType="VARCHAR" property="usex" />
+		<result column="u_phone" jdbcType="VARCHAR" property="uphone" />
+		<result column="u_mail" jdbcType="VARCHAR" property="umail" />
+		<result column="u_level" jdbcType="VARCHAR" property="ulevel" />
+</resultMap>
+<resultMap type="com.ss.vv.ss.domain.User" id="informationMap">
+        <id column="u_id" jdbcType="INTEGER" property="uid" />
+		<result column="u_name" jdbcType="CHAR" property="uname" />
+		<result column="u_sex" jdbcType="CHAR" property="usex" />
+		<result column="u_phone" jdbcType="CHAR" property="uphone" />
+		<result column="u_mail" jdbcType="CHAR" property="umail" />
+		<result column="u_level" jdbcType="CHAR" property="ulevel" />
+</resultMap>
+
+<resultMap type="com.ss.vv.ss.domain.User" id="myselfResultMap">
+		<id column="u_id" jdbcType="INTEGER" property="uid" />
+		<result column="u_name" jdbcType="VARCHAR" property="uname" />
+		<result column="u_password" jdbcType="VARCHAR" property="upassword" />
+		<result column="u_sex" jdbcType="VARCHAR" property="usex" />
+		<result column="u_phone" jdbcType="VARCHAR" property="uphone" />
+		<result column="u_mail" jdbcType="VARCHAR" property="umail" />
+		<result column="u_level" jdbcType="VARCHAR" property="ulevel" />
+</resultMap>
+
+<resultMap type="com.ss.vv.ss.domain.User" id="otherResultMap">
+		<id column="u_id" jdbcType="INTEGER" property="uid" />
+		<result column="u_name" jdbcType="VARCHAR" property="uname" />
+		<result column="u_password" jdbcType="VARCHAR" property="upassword" />
+		<result column="u_sex" jdbcType="VARCHAR" property="usex" />
+		<result column="u_phone" jdbcType="VARCHAR" property="uphone" />
+		<result column="u_mail" jdbcType="VARCHAR" property="umail" />
+</resultMap>
+
+<sql id="onemap">
+u_id,u_name,u_sex,u_mail,u_phone
+</sql>
+<sql id="twomap">
+u_name,u_password,u_sex,u_mail,u_phone
+</sql>
+
+<!-- 用户注册 -->
+<insert id="insert" useGeneratedKeys="true" keyProperty="entity.uid">
+insert into ${tableName}(u_name,u_password,u_sex,u_phone,u_mail,u_level) 
+values(#{entity.uname},#{entity.upassword},#{entity.usex},#{entity.uphone},#{entity.umail},#{entity.ulevel})
+</insert>
+
+<!-- 用户登录 -->
+<select id="login" parameterType="String" resultMap="informationMap">
+select * from user_form where u_name=#{uname} and u_password=#{upassword}
+</select>
+
+
+
+<select id="getByName" parameterType="String" resultMap="informationMap">
+select * from user_form where u_name=#{uname} and u_password=#{upassword}
+</select>
+
+<!-- 用户通过ID删除个人信息 -->
+<delete id="deleteById" parameterType="int" >
+    delete from ${tableName} where u_id=#{entity.u_id}       
+</delete>
+
+
+<!--getUserMyself用户查询：用户进入个人主页-系统显示相应的权限-->
+<select id="getById" parameterType="java.lang.Integer" resultMap="myselfResultMap">  
+    SELECT 		
+			   U_ID,
+			   U_NAME,  
+               U_PASSWORD,
+			   U_SEX,
+			   U_PHONE,
+			   U_MAIL,
+			   U_LEVEL
+   	FROM ${tableName} 
+    WHERE U_ID = #{id}  
+</select>
+
+
+<!--getOtherUserByIdf用户查询：用户进入个人主页-系统显示相应的权限-->
+<select id="getOtherById" parameterType="java.lang.Integer" resultMap="otherResultMap">  
+    SELECT 		
+			   U_ID,
+			   U_NAME,  
+               U_PASSWORD,
+			   U_SEX,
+			   U_PHONE,
+			   U_MAIL
+   	FROM USER_FORM 
+    WHERE U_ID = #{uId}  
+</select>
+<update id="update" parameterType="com.ss.vv.ss.domain.User">
+    update user_form set user_form.u_password=#{upassword},user_form.u_phone=#{uphone},user_form.u_mail=#{umail} where user_form.u_name=#{uname} 
+</update>
+<delete id="deleteByNP" parameterType="String" >
+    delete from user_form where u_name=#{uname}
+</delete>
+</mapper>

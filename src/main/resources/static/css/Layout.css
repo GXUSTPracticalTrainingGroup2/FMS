@@ -1,0 +1,46 @@
+body {
+    margin: auto;
+    border: 0;
+    background-image: url(../Picture/1.jpg);
+    background-size: cover;
+}
+.wrap {
+    margin: auto;
+    border: 0;
+    width: 70%;
+    height: 100%;
+}
+.header {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+}
+.main {
+    margin: 0;
+    border: 0;
+    width: 100%;
+    height:600px;
+    
+    position: relative;
+    /*background-color: #5bc0de;*/
+}
+
+.footer {
+    width: 100%;
+    height:40px;
+    text-align: center;
+    position: relative;
+    float: left;
+
+}
+
+ 
+   .footer{
+   border-top:#ff7d00 solid 3px;
+    border-bottom:#ff7d00 solid 3px;
+   }
+
+
+
+
+

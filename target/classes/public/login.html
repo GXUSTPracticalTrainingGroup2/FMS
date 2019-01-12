@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>美食网</title>
+    <script type="text/javascript" src="bs/js/jquery-3.3.1.main.js"></script>
+     <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <script src="bs/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/first_Layout.css"></link>
+        <link rel="stylesheet" href="css/Layout.css">
+</head>
+<body>
+<div class="wrap" id="wrap">
+    <div id="header"></div>
+    <div class="main" id="main">
+        <h3 class="title ">Login to your account</h3>
+        <div class="box_login" id="box_login">
+            <div class="col-md-6" id="denglu">
+                <form  id="login" role="form" action="/auto/user/login" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label  class="col-md-3 control-label">昵称:</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" placeholder="请输入用户名" name="uname"></div>
+                    </div>
+                    <div class="form-group">
+                        <label   class="col-md-3 control-label">密码：</label>
+                        <div class="col-md-9">
+                            <input type="password" class="form-control" placeholder="请输入密码" name="upassword"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-md-offset-3" >
+                            <input type="submit" value="登录"  class="btn-lg btn-primary " class="zhue_btn" id="che_login">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-md-offset-3" >
+                            <a href="First_Zhuce.html"><input type="button" value="注册" class="btn-lg btn-primary " id="btn" ></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/tools.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+<script type="text/javascript">
+		function checkCookie() {
+		    var user = getCookie("user_id");
+		    if (user != "" && user != null) {
+		    	window.location.href = "http://localhost:8080/auto/welcome.html"
+		    }else{
+		    	$('#login').validate({
+					rules: {
+						uname: {
+							required: true,
+						},
+						upassword: {
+							required: true,
+						}
+					},
+					messages: {
+						uname: {
+							required: "请自己修改验证规则，并在此输入提示内容",
+						},
+						upassword: {
+							required: "请自己修改验证规则，并在此输入提示内容",
+						}
+					},
+					submitHandler: function (form) {
+						addToDBlogin($('#login').attr("action"), $('#login').serialize());
+					}
+				});
+				
+				function addToDBlogin(url, data) {
+					$.ajax({
+						url : url,
+						type : "post",
+						data : data,
+						success : function(data) {
+							if (data.statusCode =="200") {
+						        setCookie("user_name",data.data.uname,{expires:1,path:'/'});
+						        setCookie("user_id",data.data.uid,{expires:1,path:'/'});
+						        setCookie("user_level",data.data.ulevel,{expires:1,path:'/'});
+								window.location.href="http://localhost:8080/auto/res_show.html";
+								alert("欢迎来到美食网");
+								//location.reload();
+							} else {
+								alert("add error!" + data.statusMsg);
+							}
+						},
+						error : function(data) {
+							alert(JSON.stringify(data));
+						}
+					})
+				}
+		    	
+		    }
+		}
+		checkCookie();
+		</script >
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/Layout.css">
+    <link rel="stylesheet" href="css/ShangJiaXiu_Layout.css">
+    <title>美食网</title>
+    <script type="text/javascript" src="bs/js/jquery-3.3.1.main.js"></script>
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <script src="bs/js/bootstrap.js"></script>
+    <script src="bs/js/holder.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    
+       <style type="text/css">
+       .footer_box{
+    float: left;
+    width: 100%;
+    line-height: 0px;/*让div中的文字内容垂直居中*/
+    text-align: center;/*让文字水平居中*/
+    position: absolute;
+    top:50%;
+    margin-top: 0px;
+    margin-left:0px;
+ }
+ #header {
+ font-size: 60px;
+}
+
+ .form-group label{
+  color: white;
+ }
+
+  .footer{
+   border-top:#ff7d00 solid 3px;
+    border-bottom:#ff7d00 solid 3px;
+   }
+ 
+       </style>
+       
+</head>
+<body>
+<div class="wrap" id="wrap">
+    <div class="header" id="header">
+        <span>美&nbsp;&nbsp;&nbsp;食&nbsp;&nbsp;&nbsp;推&nbsp;&nbsp;&nbsp;荐</span>
+    </div>
+    <div class="nav" >
+        <div class="btn-group btn-group-justified">
+            <div class="btn-group">
+                <button class="btn btn-default" id="checkuser">美食网首页</button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/res_show.html">商家秀</a></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/food_show.html">美食展示</a></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/User_Limit.html">我的管理</a></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default" id="checklevel">商家管理</button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/shequ.html">社区论坛</a></button>
+            </div>
+        </div>
+    </div>
+    <div class="main" id="main">
+        <div class="main-top" id="main-top">
+            <div class="box">
+                <div id="mycarousel" class="carousel slide"  data-ride="carousel">
+                    <!--幻灯片图片-->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="Picture/g1.jpg" style="display:block; margin:0 auto;">
+                        </div>
+                        <div class="item">
+                            <img src="Picture/g2.jpg" style="display:block; margin:0 auto;">
+                        </div>
+                        <div class="item">
+                            <img src="Picture/g3.jpg" style="display:block; margin:0 auto;">
+                        </div>
+                    </div>
+                    <!--指示灯-->
+                    <ol class="carousel-indicators">
+                        <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#mycarousel" data-slide-to="1"></li>
+                        <li data-target="#mycarousel" data-slide-to="2"></li>
+                    </ol>
+                    <!--左右控制-->
+                    <a href="#mycarousel" class="left carousel-control" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a href="#mycarousel" class="right carousel-control" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="main-center" id="main-center">
+            <div class="Pingjia">
+                <div class="col-md-12">
+                    <form id="update_stars" role="form" action="/auto/restaurant"  method="post" class="form-vertical">
+                        <div class="form-group ">
+                            <label  class="col-md-2 control-label">商店名称:</label>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" placeholder="请输入商店名称" name="Sname"></div>
+                        </div>
+                        <div class="form-group ">
+                            <label  class="col-md-2 control-label">用户ID:</label>
+                        <div class="col-md-2">
+                                <input type="text" class="form-control" placeholder="请输入用户ID" name="uid"></div>
+                        </div>
+                        <div class="form-group">
+                            <label   class="col-md-2 control-label">星级：</label>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" placeholder="请输入星级" name="stars"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="main-bottom" id="main-bottom">
+            <div class="show_tu">
+                <div class="row" >
+                    <div class="col-md-3">
+                        <img src="Picture/1.jpg" width="100%"> <a href="#####" >有爱螺蛳粉</a> </div>
+                    <div class="col-md-3">
+                        <img src="Picture/g2.jpg" width="100%"> <a href="#####">你好炸鸡腿</a></div>
+                    <div class="col-md-3">
+                        <img src="Picture/g3.jpg" width="100%"> <a href="#####" >快乐肥宅水</a></div>
+                    <div class="col-md-3">
+                        <img src="Picture/g3.jpg" width="100%"> <a href="#####" >幸福薯片</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <div class="footer" id="footer">
+    <div class="footer_box" style="color: white;font-size: 20px;font-family:华文宋体;">
+        <span><strong>东软——第二小组</strong></span>
+    </div>
+</div>
+</div>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/tools.js"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

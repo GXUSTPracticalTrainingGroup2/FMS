@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/Layout.css">
+    <link rel="stylesheet" href="css/food_show_layout.css">
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <script type="text/javascript" src="bs/js/jquery-3.3.1.main.js"></script>
+    <script src="bs/js/holder.min.js"></script>
+    <script src="bs/js/bootstrap.js"></script>
+    <title>美食网</title>
+
+
+
+
+<style type="text/css"> 
+ .btn-lg{
+ display:table;
+ width:80%;
+ float:right;
+ }
+ #inform{ 
+  position: absolute; 
+  top: 20px; 
+  width: 350px; 
+  max-height: 250px; /* 设置最大高度，当高度达到此值时出现滚动条 */ 
+  z-index: 10; 
+  background-color: #E0E5E5; 
+  overflow: y;  /* 自动添加滚动条 */ 
+  box-shadow:0px 0px 10px #000; /* 外阴影 */ 
+  display: none; /* 默认隐藏 */ 
+ } 
+ 
+ #inform hr{ 
+ border:1; 
+ width: 325px; 
+ margin-bottom: 0px; 
+ } 
+  
+
+ #inform1{ 
+  position: absolute; 
+  top: 400px; 
+  width: 350px; 
+  max-height: 250px; /* 设置最大高度，当高度达到此值时出现滚动条 */ 
+  z-index: 10; 
+  background-color: #E0E5E5; 
+  overflow: y;  /* 自动添加滚动条 */ 
+  box-shadow:0px 0px 10px #000; /* 外阴影 */ 
+  display: none; /* 默认隐藏 */ 
+ } 
+ 
+ #inform1 hr{ 
+ border:1; 
+ width: 325px; 
+ margin-bottom: 0px; 
+ } 
+  
+
+
+ #inform2{ 
+  position: absolute; 
+  top: 580px; 
+  width: 350px; 
+  max-height: 250px; /* 设置最大高度，当高度达到此值时出现滚动条 */ 
+  z-index: 10; 
+  background-color: #E0E5E5; 
+  overflow: y;  /* 自动添加滚动条 */ 
+  box-shadow:0px 0px 10px #000; /* 外阴影 */ 
+  display: none; /* 默认隐藏 */ 
+ } 
+ 
+ #inform2 hr{ 
+ border:1; 
+ width: 325px; 
+ margin-bottom: 0px; 
+ } 
+ 
+ .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  .form-group label{
+       color: white;
+       }
+   #header{
+     font-size: 60px;
+    }
+    
+    
+.book_shousuo{
+	width:85%;
+    height: 80%;
+    
+    position: absolute;
+    margin: 10px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0; 
+}
+ .footer{
+   border-top:#ff7d00 solid 3px;
+    border-bottom:#ff7d00 solid 3px;
+   }
+</style> 
+</head>
+<body>
+<div class="wrap" id="wrap">
+ <div class="header" id="header">
+        <span>美&nbsp;&nbsp;&nbsp;食&nbsp;&nbsp;&nbsp;推&nbsp;&nbsp;&nbsp;荐</span>
+    </div>
+ <div class="nav" >
+        <div class="btn-group btn-group-justified">
+            <div class="btn-group">
+                <button class="btn btn-default" id="checkuser">美食网首页</button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/res_show.html">商家秀</a></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/food_show.html">美食展示</a></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/User_Limit.html">我的管理</a></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default" id="checklevel">商家管理</button>
+            </div>            
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/shequ.html">社区论坛</a></button>
+            </div>
+        </div>
+    </div>
+    <div class="main" id="main">
+     <div class="book_shousuo">
+     <div class="btn-group btn-group-justified ">
+            <div class="bar_2">
+                    <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">搜索菜单</button>
+                    <div id="myDropdown" class="dropdown-content"> 
+                    <a href="javascript:funcShow(1)">食品名</a>
+                    <a href="javascript:funcShow(2)">商家名</a>
+                    <a href="javascript:funcShow(3)">价格</a></div>
+                    </div>
+                    <!--食品搜索框  -->
+         <div class="btn-group btn-lg">
+            <div id="div1" style="display:block">
+                    <form id="food_name"  role="form" action="/auto/attribute/getAttributeByAname" method="post" >
+                        <div class="input-group">
+                            <input type="text" class="form-control" style="text-align:center; height: 45px;" name="aname">
+                            <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default  smodal_1" style="width:150px;height: 45px">搜索1</button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        <!--商店搜索框  -->
+            <div id="div2" style="display:none">
+                    <form id="food_res" role="form" action="/auto/attribute/getAttributeByRname" method="post" >
+                        <div class="input-group">
+                            <input type="text" class="form-control" style="text-align:center; height: 45px;" name="rname">
+                            <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default  smodal_1" style="width:150px;height: 50px">搜索2</button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        <!-- 价格搜索框 -->
+            <div id="div3" style="display:none">
+                    <form id="food_price"  role="form" action="/auto/attribute/getAttributeByPrice" method="post" >
+                        <div class="input-group">
+                            <input type="text" class="form-control" style="text-align:center; height: 45px;" name="price">
+                            <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default  smodal_1" style="width:150px;height: 50px">搜索3</button>
+                            </div>
+                        </div>
+                    </form>     
+            </div>
+        </div>
+      </div>
+         <table class="table table-striped table-hove table-bordered" >	
+                <thead>
+                    <tr style="height: 30px;color:white;">
+                       <td>食品名字</td>
+                        <td>食品数量</td>
+                        
+                        <td>价格</td>
+                        <td>星星数</td>
+                        <td>商店名字</td>
+                         <td>商店地址</td>
+                    </tr>
+                    </thead>
+                      <tbody>
+                       <tr>
+                      </tr>
+                    </tbody>
+                </table>
+    </div>
+    </div>
+    </div>
+     <div class="footer" id="footer">
+    <div class="footer_box" style="color: white;font-size: 20px;font-family:华文宋体;">
+        <span><strong>东软——第二小组</strong></span>
+    </div>
+</div>
+  </div>
+	<script src="js/plugins/peity/jquery.peity.min.js"></script>
+	<script src="js/plugins/iCheck/icheck.min.js"></script>
+	<script src="js/bootstrap-paginator.min.js"></script>
+	<script src="js/bootstrap-editable.js"></script>
+	<script src="js/bootstrap-table.js"></script>
+	<script src="js/bootstrap-table-zh-CN.js"></script>
+	<script src="js/bootstrap-table-editable.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/tools.js"></script>
+<script type="text/javascript"> 
+ /* 点击按钮，下拉菜单在 显示/隐藏 之间切换 */
+ function myFunction() {
+     document.getElementById("myDropdown").classList.toggle("show");
+ }
+
+ // 点击下拉菜单意外区域隐藏
+ window.onclick = function(event) {
+   if (!event.target.matches('.dropbtn')) {
+
+     var dropdowns = document.getElementsByClassName("dropdown-content");
+     var i;
+     for (i = 0; i < dropdowns.length; i++) {
+       var openDropdown = dropdowns[i];
+       if (openDropdown.classList.contains('show')) {
+         openDropdown.classList.remove('show');
+       }
+     }
+   }
+ }
+ 
+ function funcShow(id){
+	    for(var i=0;i<3;i++){
+	        var divInfo =document.getElementById('div'+(i+1));
+	        divInfo.style.display='none';
+	    }
+	    var div =document.getElementById('div'+id);
+	    div.style.display='block';
+	}
+ 
+/*  通过价格查找*/ 
+ $('#food_price').validate({
+		rules: {
+			price: {
+				required: true,
+			}
+			
+		},
+		messages: {
+			price: {
+				required: "请自己修改验证规则，并在此输入提示内容",
+			}
+		},
+		submitHandler: function (form) {
+			addToDBRegis($('#food_price').attr("action"), $('#food_price').serialize());
+		}
+	});
+
+	function addToDBRegis(url, data) {
+		$.ajax({
+			url : url,
+			type : "post",
+			data : data,
+			success : function(data) {
+				if (data.statusCode =="200") {
+					var str = '';
+						 for (var i = 0; i < data.data.length; i++) {
+					str += '<tr class="success">'
+							+ '<td>' + data.data[i].aname + '</td>'
+							+ '<td>' + data.data[i].count + '</td>'
+							
+							+ '<td>' + data.data[i].price + '</td>'
+							+ '<td>' + data.data[i].restaurant.stars + '</td>'
+							+ '<td>' + data.data[i].restaurant.rname + '</td>'
+							+ '<td>' + data.data[i].restaurant.address + '</td>'
+							+ '</tr>';
+						} 
+				$("table tbody").html(str);
+					//location.reload();
+				} else {
+					alert("add error!" + data.statusMsg);
+				}
+			},
+			error : function(data) {
+				alert(JSON.stringify(data));
+			}
+		})
+	}
+	/* 通过名字查找 */
+	 $('#food_name').validate({
+			rules: {
+				price: {
+					required: true,
+				}
+				
+			},
+			messages: {
+				price: {
+					required: "请自己修改验证规则，并在此输入提示内容",
+				}
+			},
+			submitHandler: function (form) {
+				addToDBRegis($('#food_name').attr("action"), $('#food_name').serialize());
+			}
+		});
+
+		function addToDBRegis(url, data) {
+			$.ajax({
+				url : url,
+				type : "post",
+				data : data,
+				success : function(data) {
+					if (data.statusCode =="200") {
+						var str = '';
+							 for (var i = 0; i < data.data.length; i++) {
+									str += '<tr  class="success">'
+										+ '<td>' + data.data[i].aname + '</td>'
+										+ '<td>' + data.data[i].count + '</td>'
+									
+										+ '<td>' + data.data[i].price + '</td>'
+										+ '<td>' + data.data[i].restaurant.stars + '</td>'
+										+ '<td>' + data.data[i].restaurant.rname + '</td>'
+										+ '<td>' + data.data[i].restaurant.address + '</td>'
+										+ '</tr>';
+							} 
+					$("table tbody").html(str);
+						//location.reload();
+					} else {
+						alert("add error!" + data.statusMsg);
+					}
+				},
+				error : function(data) {
+					alert(JSON.stringify(data));
+				}
+			})
+		}
+		/*通过商家名字查找  */
+		 $('#food_res').validate({
+				rules: {
+					price: {
+						required: true,
+					}
+					
+				},
+				messages: {
+					price: {
+						required: "请自己修改验证规则，并在此输入提示内容",
+					}
+				},
+				submitHandler: function (form) {
+					addToDBRegis($('#food_res').attr("action"), $('#food_res').serialize());
+				}
+			});
+
+			function addToDBRegis(url, data) {
+				$.ajax({
+					url : url,
+					type : "post",
+					data : data,
+					success : function(data) {
+						if (data.statusCode =="200") {
+							var str = '';
+								 for (var i = 0; i < data.data.length; i++) {
+										str += '<tr class="success">'
+											+ '<td>' + data.data[i].aname + '</td>'
+											+ '<td>' + data.data[i].count + '</td>'
+											+ '<td>' + data.data[i].price + '</td>'
+											+ '<td>' + data.data[i].restaurant.stars + '</td>'
+											+ '<td>' + data.data[i].restaurant.rname + '</td>'
+											+ '<td>' + data.data[i].restaurant.address + '</td>'
+											+ '</tr>';
+								} 
+						$("table tbody").html(str);
+							//location.reload();
+						} else {
+							alert("add error!" + data.statusMsg);
+						}
+					},
+					error : function(data) {
+						alert(JSON.stringify(data));
+					}
+				})
+			}
+</script> 
+</body>
+</html>

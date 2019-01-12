@@ -1,0 +1,80 @@
+h3{
+    font-family: 'Berkshire Swash', cursive;
+
+}
+h3.title{
+    font-size: 40px;
+    color:#ffffff;
+    text-align: center;
+    margin-top: 90px;
+}
+h3.hh{
+    font-size: 40px;
+    color:#ffffff;
+    text-align: center;
+    margin-top: 70px;
+}
+
+#zhuce{
+    margin: auto;
+    top: 50px;
+    left: 10%;
+    bottom: 0;
+    right: 0;
+    width:80%;
+    height: 90%;
+    color: white;
+}
+#zhuce1{
+     box-shadow: 0 0 14px 7px;
+    margin: auto;
+    top: 120px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width:85%;
+    height: 100%;
+    color: white;
+}
+#denglu{
+    position: absolute;
+    margin: auto;
+    top: 120px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width:85%;
+    height: 90%;
+    color: white;
+}
+#zhue_btn{
+    width: 100%;
+}
+
+#box_login {
+    box-shadow: 0 0 14px 7px;
+    position: absolute;
+    margin: auto;
+    top: -120px;
+    bottom: 0;
+    right: 30px;
+    width:45%;
+    height: 50%;
+    
+    left: 0;
+    bottom: 0;
+    /*background-color: #5bc0de;*/
+}
+.box_login p{
+    margin-left: 5px;
+    color: white;
+}
+
+
+div#zhuce label{
+    font-weight: 100;
+    font-size: large;
+}
+
+
+

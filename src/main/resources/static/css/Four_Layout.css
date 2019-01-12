@@ -1,0 +1,168 @@
+.box_header{
+    width: 100%;
+    height: 150px;
+    float: left;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    /*background-color: gold;*/
+}
+
+.box_body{
+    width: 100%;
+    height: 450px;
+    float: left;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    background-color: greenyellow;
+}
+.touxiang{
+    width: 20%;
+    height: 100%;
+    float: left;
+    padding: 10px;
+    margin: 0;
+    position: relative;
+    background-color: white;
+}
+.touxiang_2{
+    width: 100%;
+    height: 100%;
+    float: left;
+    padding: 1px;
+    margin: 0;
+    position: relative;
+}
+.box_btn{
+    width:80%;
+    height: 100%;
+    float: right;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    /*background-color: #2aabd2;*/
+}
+.box_btn_top{
+    width:100%;
+    height: 70%;
+    float: right;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    /*background-color:red;*/
+}
+.box_btn_fooder{
+    width:100%;
+    height: 30%;
+    float: right;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    /*background-color:rebeccapurple;*/
+}
+.box_fabu{
+    width:80%;
+    height: 80%;
+    float: right;
+    padding: 0;
+    margin: 5%;
+    position: relative;
+}
+.modal-body{
+    width: 100%;
+    height: 550px;
+}
+
+/*我的权限布局*/
+.box_QuanXian_left{
+     width: 50%;
+     height: 100%;
+     float: left;
+     padding: 0;
+     margin: 0;
+     position: relative;
+     background-color: tomato;
+ }
+.box_QuanXian_right{
+    width: 50%;
+    height: 100%;
+    float: right;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    background-color: burlywood;
+}
+
+/*（【box_QuanXian_left_1】包含三个权限按钮的框，为了放在中间）*/
+.box_QuanXian_left_1{
+    border: 0;
+    text-align: center;
+    width: 80%;
+    height: 40%;
+    float: left;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+/*//（box_ZhuXiao）右边注销的注销页面，注销页面需输入“账号”“密码”*/
+.box_ZhuXiao{
+    border: 0;
+    text-align: center;
+    width: 80%;
+    height: 40%;
+    float: right;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.box_tuichu{
+    border: 0;
+    text-align: center;
+    width: 80%;
+    height: 40%;
+    float: right;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.QuanXian_Tuichu h4{
+    font-size: 40px;
+    color:#ffffff;
+    text-align: center;
+    margin-top: 90px;
+}
+#box_User_chakan {
+    box-shadow: 0 0 14px 7px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width:90%;
+    height: 90%;
+}
+#box_Restaurant_chakan {
+    box-shadow: 0 0 14px 7px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width:90%;
+    height: 90%;
+}

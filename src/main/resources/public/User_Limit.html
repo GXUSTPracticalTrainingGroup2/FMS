@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="css/Layout.css">
+    <link rel="stylesheet" href="css/WoDeGuangLi_Layout.css">
+    <title>美食网</title>
+    <script type="text/javascript" src="bs/js/jquery-3.3.1.main.js"></script>
+    <script src="bs/js/jquery.min.js"></script>
+    <script src="bs/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <script src="bs/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="bs/css/bootstrap.min.css">
+       <style type="text/css">
+       .footer_box{
+    float: left;
+    width: 100%;
+    line-height: 0px;/*让div中的文字内容垂直居中*/
+    text-align: center;/*让文字水平居中*/
+    position: absolute;
+    top:50%;
+    margin-top: 0px;
+    margin-left:0px;
+ }
+       .box_QuanXian_right label{
+       color: white;
+       }
+      
+    #header{
+     font-size: 60px;
+    }
+   
+   .footer{
+   border-top:#ff7d00 solid 3px;
+    border-bottom:#ff7d00 solid 3px;
+   }
+ 
+       </style>
+       
+</head>
+<body>
+<div class="wrap" id="wrap">
+    <div class="header" id="header">
+        <span>美&nbsp;&nbsp;&nbsp;食&nbsp;&nbsp;&nbsp;推&nbsp;&nbsp;&nbsp;荐</span>
+    </div>
+
+     <div class="nav" >
+        <div class="btn-group btn-group-justified">
+            <div class="btn-group">
+                <button class="btn btn-default" id="checkuser">美食网首页</button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/res_show.html">商家秀</a></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/food_show.html">美食展示</a></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/User_Limit.html">我的管理</a></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default" id="checklevel">商家管理</button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/shequ.html">社区论坛</a></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main" id="main">
+
+        <div class="box_header">
+            <div class="touxiang">
+                <div class="touxiang_2">
+                    <img src="Picture/g2.jpg" width="100%">
+                </div>
+            </div>
+            <div class="box_btn">
+                <div class="box_btn_top"></div>
+                <div class="box_btn_fooder">
+                    <div class="btn-group btn-group-justified">
+                        <div class="btn-group" >
+                            <button class="btn btn-info btn-lg smodal_1">我的资料</button>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-primary btn-lg ">我的权限</button>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-warning btn-lg"><a href="http://localhost:8080/auto/User_Limit.html">我的发布</a></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--//我的权限-->
+        <div class="box_body">
+            <div class="box_QuanXian_left">
+                <div class="box_QuanXian_left_1">
+                <div class="btn-group btn-group-horizontal">
+                    <div class="btn-group">
+                        <button class="btn-lg btn-default"><a href="javascript:funcShow(1)">注销账号</a></button>
+                    </div>
+                    <div class="btn-group" >
+                        <button class="btn-lg btn-default"><a href="javascript:funcShow(2)">退出登录</a></button>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn-lg btn-default" id="test"><a href="javascript:funcShow(3)">查看资料</a></button>
+                    </div>
+                     <div class="btn-group">
+                        <button class="btn-lg btn-default"><a href="http://localhost:8080/auto/res_regis.html">添加商店</a></button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="box_QuanXian_right">
+<!--注销  -->
+
+                <div id="div1" style="display:block">
+                    <div class="box_ZhuXiao">
+                        <div class="col-md-11">
+                            <form id="user_del" role="form" action="/auto/user/deleteByNameAndPassword" method="post" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">姓名:</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" id="una" name="uname" placeholder="请输入姓名"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">密码：</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="upassword" placeholder="请输入密码"></div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-10 col-md-offset-2" >
+                                        <input type="submit" value="注销" class="btn-lg btn-primary " id="Zhuxiao_btn"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--退出登录  -->
+                <div id="div2" style="display:none">
+                    <div class="QuanXian_Tuichu">
+                        <div class="box_tuichu">
+                            <div class="box_btn_fooder">
+                                <div class="btn-group btn-group-justified">
+                                    <div class="btn-group">
+                                        <button class="btn btn-info btn-lg " id="logout">退出</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--用户基本信息展示-->
+                <div id="div3" style="display:none">
+                    <div class="box_User_chakan" id="box_User_chakan">
+                        <div class="col-md-12" id="zhuce">
+                        <table class="table table-striped table-hove table-bordered" >
+                        <thead>
+                        </thead>
+                         <tbody>
+                          <tr>
+                          </tr>
+                        </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--//我的资料-->
+        <div id="mymodal_1" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="close" data-dismiss="modal">&times;</div>
+                        <h3>编辑资料</h3>
+                    </div>
+                    <div class="modal-body" >
+                        <div class="col-md-3">
+                            <form id="user_update" role="form"  action="/auto/user/UpdateByAll" method="post">
+                                <div class="form-group">
+                                    <label for="">姓名：</label>
+                                    <input type="text" class="form-control" name="uname" id="upname">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">密码：</label>
+                                    <input type="text" class="form-control" name="upassword">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">性别：</label>
+                                    <input type="text" class="form-control" name="usex">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">手机号：</label>
+                                    <input type="text" class="form-control" name="uphone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">邮箱：</label>
+                                    <input type="text" class="form-control" name="umail">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">用户等级：</label>
+                                    <input type="text" class="form-control" name="ulevel">
+                                </div>
+                                <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary save" >保存</button>
+                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <div class="footer" id="footer">
+    <div class="footer_box" style="color: white;font-size: 20px;font-family:华文宋体;">
+        <span><strong>东软——第二小组</strong></span>
+    </div>
+</div>
+</div>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/tools.js"></script>
+	<script src="js/User_limit.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+
+<script type="text/javascript" >
+
+    
+    //用户注销账户
+    $('#user_del').validate({
+		rules: {
+			uname: {
+				required: true,
+			},
+			upassword: {
+				required: true,
+			}
+			
+		},
+		messages: {
+			uname: {
+				required: "请自己修改验证规则，并在此输入提示内容",
+			},
+			upassword: {
+				required: "请自己修改验证规则，并在此输入提示内容",
+			}
+		},
+		submitHandler: function (form) {
+			addToDBuserDel($('#user_del').attr("action"), $('#user_del').serialize());
+		}
+	});
+	
+	function addToDBuserDel(url, data) {
+		var uname = getCookie("user_name");
+		var c=document.getElementById("una").value;
+		if(uname == c){
+		$.ajax({
+			url : url,
+			type : "post",
+			data : data,
+			success : function(data) {
+				if (data.statusCode =="200") {
+					 deleteCookie("user_id");
+					 deleteCookie("user_name");
+					 deleteCookie("user_level");
+					window.location.href="http://localhost:8080/auto/login.html";
+					alert("注销成功");
+				} else {
+					alert("add error!" + data.statusMsg);
+				}
+			},
+			error : function(data) {
+				alert(JSON.stringify(data));
+			}
+		})
+		}else{
+			alert("请输入正确的用户名");
+		}
+	}
+		
+	    //用户更新账户
+		$('#user_update').validate({
+		rules: {
+			uname: {
+				required: true,
+			},
+			upassword: {
+				required: true,
+			}
+			
+		},
+		messages: {
+			uname: {
+				required: "请自己修改验证规则，并在此输入提示内容",
+			},
+			upassword: {
+				required: "请自己修改验证规则，并在此输入提示内容",
+			}
+		},
+		submitHandler: function (form) {
+			addToDBuserUpdate($('#user_update').attr("action"), $('#user_update').serialize());
+		}
+	});
+	
+	function addToDBuserUpdate(url, data) {
+		var ss=getCookid("user_name");
+		var c=document.getElementById("upname").value;
+		if(ss == c){
+			$.ajax({
+				url : url,
+				type : "post",
+				data : data,
+				success : function(data) {
+					if (data.statusCode =="200") {
+						alert("更改成功");
+					} else {
+						alert("add error!" + data.statusMsg);
+					}
+				},
+				error : function(data) {
+					alert(JSON.stringify(data));
+				}
+			})
+			
+		}
+	}
+	
+	//显示用户信息
+	$("#test").click(function(){
+		var uid = getCookie("user_id");
+		getuserinfo(uid);
+		});
+	function getuserinfo(data){
+		$.ajax({
+			url : "/auto/user/getUserById?uid="+data,
+			type : "post",
+			async: false,
+			success : function(data) {
+				console.log(data);
+				if (data.statusCode =="200") {
+					var str = '';
+				str +=    '<tr class="info">'
+					    + '<td>' + "用户ID:" + '</td>'
+						+ '<td>' + data.data.uid + '</td>'
+						+ '</tr>'
+						+ '<tr class="info">'
+					    + '<td>' + "名字:" + '</td>'
+						+ '<td>' + data.data.uname + '</td>'
+						+ '</tr>'
+						+ '<tr class="info">'
+					    + '<td>' + "性别:" + '</td>'
+						+ '<td>' + data.data.usex + '</td>'
+						+ '</tr>'
+						+ '<tr class="info">'
+					    + '<td>' + "手机号码:" + '</td>'
+						+ '<td>' + data.data.uphone + '</td>'
+						+ '</tr>'
+						+ '<tr class="info">'
+					    + '<td>' + "邮箱:" + '</td>'
+						+ '<td>' + data.data.umail + '</td>'
+						+ '</tr>'
+						+ '<tr class="info">'
+					    + '<td>' + "用户等级:" + '</td>'
+						+ '<td>' + data.data.ulevel + '</td>'
+						+ '</tr>';
+			$("table tbody").html(str);
+				//location.reload();
+				} else {
+					alert("add error!" + data.statusMsg);
+				}
+			},
+			error : function(data) {
+				alert(JSON.stringify(data));
+			}
+		})
+	}
+	
+/* 退出*/ 
+	 $("#logout").click(function(){
+					 deleteCookie("user_id");
+					 deleteCookie("user_name");
+					 deleteCookie("user_level");
+					 window.location.href = "http://localhost:8080/auto/login.html"
+						});
+
+	 
+</script>
+</body>
+</html>

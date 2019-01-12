@@ -1,0 +1,188 @@
+div#foodshow{
+}
+
+#nav {
+    float: right;
+    width: 100%;
+    height: 50px;
+    position: relative;
+    /* background-color:chartreuse; */
+}
+
+#nav ul {
+    float: left;
+    font-size: 15px;
+}
+
+#nav ul li {
+    float: left;
+    position: relative;
+    margin-left: 20px;
+    display: inline;
+}
+#nav ul li a {
+    float: left;
+    width:100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    text-decoration: none;
+    background: url(Picture/tou.jpg) no-repeat left top;
+}
+
+.title{
+    width: 100%;
+    height: 15%;
+    /* background-color:white; */
+    text-align: center;
+}
+
+
+
+#box{
+        width: 380px;
+        margin: 30px auto;
+        height: 20px;
+        font-family: 'Microsoft YaHei';
+        font-size: 14px;
+}
+input{
+        width: 260px;
+        border: 1px solid #e2e2e2;
+        height: 30px;
+        float: left;
+        padding:0 0 0 40px;
+}
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.sreach {
+    height: 50px;
+    position: relative;
+    display: inline-block;
+}
+
+/* 涓嬫媺鍐呭 (榛樿闅愯棌) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* 涓嬫媺鑿滃崟鐨勯摼鎺� */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* 榧犳爣绉讳笂鍘诲悗淇敼涓嬫媺鑿滃崟閾炬帴棰滆壊 */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* 鍦ㄩ紶鏍囩Щ涓婂幓鍚庢樉绀轰笅鎷夎彍鍗� */
+.sreach:hover .dropdown-content {
+    display: block;
+}
+
+/* 褰撲笅鎷夊唴瀹规樉绀哄悗淇敼涓嬫媺鎸夐挳鐨勮儗鏅鑹� */
+.sreach:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+
+.box-bottom{
+        width:100%;
+        height: 200px;
+        border-style: solid;
+        background-size: 64px;
+        /* background-color: red; */
+}
+
+.bar1 {
+    width:70%;
+    float: right;
+    padding: 20px 0;
+}
+
+.bar1 input {
+    width: 70%;
+    border: 2px solid #7BA7AB;
+    border-radius: 5px;
+    background: #F9F0DA;
+    color: #9E9C9C;
+}
+
+
+.bar1 button {
+    top: 0;
+    right: 0;
+    background: #7BA7AB;
+    border-radius: 0 5px 5px 0;
+}
+.bar1 button:before {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: #F9F0DA;
+}
+div#foodimg img{
+    width:300px ;
+    height:300px;
+}
+
+
+
+.foodshow1{
+    width: 100%;
+    height: 200px;
+    /* background-color: red */
+
+}
+.foodshow2{
+    width: 100%;
+    height: 200px;
+    /* background-color: yellow; */
+}
+.foodshow3{
+    width: 100%;
+    height: 200px;
+    /* background-color: #000; */
+}
+.tupian{
+    width: 40%;
+    float: left;
+    /* background-color: #000; */
+    text-align: center;
+}
+.neirong{
+    width:40%;
+    float: right;
+    /* background-color: red; */
+}
+.tp{
+    width: 150px;
+    height: 150px;
+}
+
+#chang{
+    width: 200px;
+    height: 30px;
+    background-color:transparent;
+    border: none;
+}
+
+#header {
+    font-family: 鍗庢枃妤蜂綋;
+    color: yellowgreen;
+    letter-spacing: 4px;
+  
+}

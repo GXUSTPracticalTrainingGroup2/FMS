@@ -1,0 +1,193 @@
+#header {
+    font-family: 华文楷体;
+    color: yellowgreen;
+    letter-spacing: 4px;
+}
+
+.main {
+    margin: 0;
+    border: 0;
+    width: 100%;
+    height: 600px;
+    overflow: auto;
+    border: 1px solid #000000;
+}
+
+#main_left{
+    width: 41%;
+    height: 2800px;
+    float: left;
+    letter-spacing: 2px;
+    position: relative;
+}
+#main_left_content {
+    border: 0;
+    text-align: center;
+    width: 90%;
+    height: 98%;
+    float: left;
+    background-color: #c0c0c0;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#main_right{
+    width: 59%;
+    height: 100%;
+    float: right;
+    letter-spacing: 1px;
+}
+.main_right1{
+    width: 100%;
+    height:40%;
+    /*background-color: red;*/
+
+    /*border-bottom: 3px solid;*/
+}
+.main_right11{
+    width: 100%;
+    height: 23%;
+    /*background-color: #1b6d85;*/
+}
+.main_right12{
+    width: 100%;
+    height: 80%;
+    /*background-color: #3c3c3c;*/
+}
+.pic{
+    width: 10%;height: 100%;
+    background-image: url("Picture/6.jpg");
+    background-size: cover;
+    border-radius: 100%;
+    float: left;
+}
+.pic1{
+    width: 10%;height: 100%;
+    background-color: #761c19;
+    background-image: url("Picture/30.jpg");
+    background-size: cover;
+    border-radius: 100%;
+    float: left;
+}
+.pic2{
+    width: 10%;height: 100%;
+    background-color: #761c19;
+    background-image: url("Picture/26.jpg");
+    background-size: cover;
+    border-radius: 100%;
+    float: left;
+}
+.pic3{
+    width: 10%;height: 100%;
+    background-color: #761c19;
+    background-image: url("Picture/14.jpg");
+    background-size: cover;
+    border-radius: 100%;
+    float: left;
+}
+.pic4{
+    width: 10%;height: 100%;
+    background-color: #761c19;
+    background-image: url("Picture/21.jpg");
+    background-size: cover;
+    border-radius: 100%;
+    float: left;
+}
+.pic5{
+    width: 10%;height: 100%;
+    background-color: #761c19;
+    background-image: url("Picture/37.jpg");
+    background-size: cover;
+    border-radius: 100%;
+    float: left;
+}
+.pic6{
+    width: 10%;height: 100%;
+    background-color: #761c19;
+    background-image: url("Picture/24.jpg");
+    background-size: cover;
+    border-radius: 100%;
+    float: left;
+}
+.pic7{
+    width: 10%;height: 100%;
+    background-color: #761c19;
+    background-image: url("Picture/30.jpg");
+    background-size: cover;
+    border-radius: 100%;
+    float: left;
+}
+.pic8{
+    width: 10%;height: 100%;
+    background-color: #761c19;
+    background-image: url("Picture/18.jpg");
+    background-size: cover;
+    border-radius: 100%;
+    float: left;
+}
+.pic9{
+    width: 10%;height: 100%;
+    background-color: #761c19;
+    background-image: url("Picture/33.jpg");
+    background-size: cover;
+    border-radius: 100%;
+    float: left;
+}
+.username{
+    width: 90%;
+    height: 100%;
+    float: right;
+}
+.main121{
+    width: 100%;
+    height:30%;
+    /*background-color: #c7254e;*/
+}
+.main122{
+    width: 100%;
+    height: 70%;
+    /*background-color: #99CCCC;*/
+}
+.main_right12_left{
+    width: 13%;
+    height: 100%;
+    float: left;
+}
+.main_right12_right{
+    width: 87%;
+    height: 100%;
+    float: right;
+}
+.img1{
+    width: 66%;
+    height: 100%;
+    float: left;
+}
+.img11{
+    width: 50%;
+    height: 100%;
+    float:left;
+}
+.img12{
+    width: 50%;
+    height: 100%;
+    float: right;
+}
+.img2{
+    width: 33%;
+    height: 100%;
+    float: right;
+}
+
+
+
+/*滚动*/
+.box{
+    width: 100%;
+    height: 150px;
+    margin: 100px 0px;
+}

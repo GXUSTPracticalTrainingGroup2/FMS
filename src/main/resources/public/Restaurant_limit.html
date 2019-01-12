@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="css/Layout.css">
+    <link rel="stylesheet" href="css/WoDeGuangLi_Layout.css">
+    <title>美食网</title>
+    <script type="text/javascript" src="bs/js/jquery-3.3.1.main.js"></script>
+    <script src="bs/js/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <script src="bs/js/bootstrap.js"></script>
+    <script src="bs/js/holder.min.js"></script>
+    <link rel="stylesheet" href="bs/css/bootstrap.min.css">
+    <script src="bs/js/bootstrap.min.js"></script>
+ <style type="text/css">
+       .footer_box{
+    float: left;
+    width: 100%;
+    line-height: 0px;/*让div中的文字内容垂直居中*/
+    text-align: center;/*让文字水平居中*/
+    position: absolute;
+    top:50%;
+    margin-top: 0px;
+    margin-left:0px;
+ }
+ 
+       .box_QuanXian_right label{
+       color: white;
+       }
+    #header{
+     font-size: 60px;
+     }
+     .btn-group a button{
+     width:300px;
+     hight:150px;
+     }
+     .food_form{
+     width:400px;
+    
+     }
+      .footer{
+   border-top:#ff7d00 solid 3px;
+    border-bottom:#ff7d00 solid 3px;
+   }
+       </style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+    <div class="header" id="header">
+        <span>美&nbsp;&nbsp;&nbsp;食&nbsp;&nbsp;&nbsp;推&nbsp;&nbsp;&nbsp;荐</span>
+    </div>
+    
+    <div class="nav" >
+        <div class="btn-group btn-group-justified">
+            <div class="btn-group">
+                <button class="btn btn-default" id="checkuser"><a href="">美食网首页</a></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/res_show.html">商家秀</a></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/food_show.html">美食展示</a></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/User_Limit.html">我的管理</a></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/Restaurant_Limit.html">商家管理</a></button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default"><a href="http://localhost:8080/auto/shequ.html">社区论坛</a></button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main" id="main">
+
+        <div class="box_header">
+            <div class="touxiang">
+                <div class="touxiang_2">
+                    <img src="Picture/g2.jpg" width="100%">
+                </div>
+            </div>
+            <div class="box_btn">
+                <div class="box_btn_top"></div>
+                <div class="box_btn_fooder">
+                    <div class="btn-group btn-group-justified">
+                        <div class="btn-group">
+                            <button class="btn btn-info btn-lg smodal_1" id="wodeziliao">我的资料</button>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-success btn-lg ">我的权限</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--//商家的资料（可更改）-->
+        <div id="mymodal_1" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="close" data-dismiss="modal">&times;</div>
+                        <h3>编辑资料</h3>
+                    </div>
+                    <div class="modal-body" style=" width: 100%;height: 850px;">
+                        <div class="col-md-3">
+                            <form id="resupdate" role="form" action="/auto/restaurant/update" method="post" >
+                            <div class="form-group">
+                                    <label for="">商店ID：</label>
+                                    <input type="text" class="form-control" id="r_id" name="rid">
+                                </div>
+                               <div class="form-group">
+                                    <label for="">用户ID：</label>
+                                    <input type="text" class="form-control" id="u_id" name="uid">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">商店名字：</label>
+                                    <input type="text" class="form-control" id="r_name" name="rname">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">商店地址：</label>
+                                    <input type="text" class="form-control" id="r_address" name="address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">商店电话：</label>
+                                    <input type="text" class="form-control" id="r_phone" name="rphone">
+                                </div>
+                                <div class="modal-footer">
+                                <button class="btn btn-default" data-dismiss="modal">关闭</button>
+                                <button type="submit" class="btn btn-primary save" >保存</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--//商家的权限-->
+        <div class="box_body">
+            <div class="box_QuanXian_left">
+                <div class="box_QuanXian_left_1">
+                    <div class="btn-group btn-group-horizontal">
+                        <div class="btn-group">
+                            <a href="javascript:funcShow(1)"><button class="btn-lg btn-default">注销账号</button></a>
+                        </div>
+                        <div class="btn-group">
+                            <a href="javascript:funcShow(2)"><button class="btn-lg btn-default">退出登录</button></a>
+                        </div>
+                        <div class="btn-group">
+                            <a href="http://localhost:8080/auto/res_info_show.html"><button class="btn-lg btn-default">查看资料</button></a>
+                        </div>
+                        <div class="btn-group">
+                            <a href="javascript:funcShow(4)"><button class="btn-lg btn-default">增加食品</button></a>
+                        </div>
+                        <div class="btn-group">
+                            <a href="javascript:funcShow(5)"><button class="btn-lg btn-default">删除食品</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box_QuanXian_right">
+                <div id="div1" style="display:block">
+                    <div class="box_ZhuXiao">
+                        <div class="col-md-11">
+                            <form id="res_del" role="form" method="post" action="/auto/restaurant/deleteById" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">店铺ID:</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" placeholder="请输入店铺ID" name="rid"></div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-10 col-md-offset-2" >
+                                        <input type="submit" value="注销" class="btn-lg btn-primary " id="Zhuxiao_btn"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div id="div2" style="display:none">
+                    <div class="QuanXian_Tuichu">
+                        <div class="box_ZhuXiao">
+                       
+                         <div class="btn-group btn-group-justified">
+                                    <div class="btn-group">
+                                    <button class="btn btn-info btn-lg " id = "logout">退出</button>
+                                    </div>
+                                    </div>
+                          </div>
+                       
+                    </div>
+                </div>
+                 <div id="div3" style="display:none">
+                </div>
+                
+                <div id="div4" style="display:none">
+                    <!--//增加食品-->
+                    <div class="box_Restaurant_zengjia" id="box_Restaurant_zengjia">
+                        <div class="col-md-12">
+                            <form id="food_form" role="form" action="/auto/attribute/attributeAdd"  method="post" onsubmit="return chkAll();" class="form-horizontal" >
+                              <div class="form-group">
+                                    <label for="" class="col-md-3 control-label">商店ID:</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="请输入食品名称"
+                                               name="rid"></div>
+                                    <div id="foodnamePrompt" class="col-md-5"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-md-3 control-label">食品名称:</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="请输入食品名称"
+                                               name="aname"></div>
+                                    <div id="foodnamePrompt" class="col-md-5"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for=""  class="col-md-3 control-label">价格:</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="请输入价格"
+                                               name="price"></div>
+                                    <div class="col-md-5">&nbsp;</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for=""  class="col-md-3 control-label">数量:</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="请输入数量"
+                                               name="count" onblur="chkInt();"></div>
+                                    <div id="idIntPrompt" class="col-md-5">&nbsp;</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for=""  class="col-md-3 control-label">重量:</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="请输入重量"
+                                               name="weight"  onblur=""></div>
+                                    <div id="idIntPrompt" class="col-md-5">&nbsp;</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for=""  class="col-md-3 control-label">生产日期:</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="请输入生产日期"
+                                               name="expDate" id="idSCData" onblur="chkSCData();"></div>
+                                    <div id="idSCDataPrompt" class="col-md-5">&nbsp;</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for=""  class="col-md-3 control-label">到期时间:</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="请输入到期时间"
+                                               name="proDate" id="idDQData" onblur="chkDQData();"></div>
+                                    <div id="idDQDataPrompt" class="col-md-5">&nbsp;</div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4 col-md-offset-2" >
+                                        <input type="submit" class="btn-lg btn-primary " id="zhue_btn"
+                                               name="submit" value="增加"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div id="div5" style="display:none">
+                    <!--删除食品-->
+                    <div class="box_Restaurant_ShanChu" id="box_Restaurant_ShanChu">
+                        <div class="col-md-12" id="shanchu1">
+                            <form  id="food_del" role="form" action="/auto/restaurant/deleteByAId"  method="post" class="form-horizontal" >
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">食品ID：</label>
+                                    <div class="col-md-9" >
+                                        <input type="text" class="form-control" style="width: 50%;height:30px;line-height: 20px" name="aid"></div>
+                                </div>
+                                <div class="form-group" style="text-align:center">
+                                    <input type="submit" name="shanchu" id="shanchu" value="删除">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+    <div class="footer_box" style="color: white;font-size: 20px;font-family:华文宋体;">
+        <span><strong>东软——第二小组</strong></span>
+    </div>
+</div>
+</div>
+
+
+	<script src="js/jquery.min.js?v=2.1.4"></script>
+	<script src="js/bootstrap.min.js?v=3.3.6"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/tools.js"></script>
+<script>
+$(".save").click(function(){
+    //把modal隐藏
+    $('#mymodal').modal('hide');
+});
+//开启modal
+$('.smodal_1').click(function(){
+    $('#mymodal_1').modal('show');
+});
+
+//    我的权限
+function funcShow(id){
+    for(var i=0;i<4;i++){
+        var divInfo =document.getElementById('div'+(i+1));
+        divInfo.style.display='none';
+    }
+    var div =document.getElementById('div'+id);
+    div.style.display='block';
+}
+
+//商家权限
+// 输入整数
+function isInt(str){
+    var re=/^\d+/;
+    return re.test(str);
+}
+// 输入日期格式
+function isData(str){
+    var re=/^[1-2]\d{3}(-|\/)((0?[1-9]|1[0-2])(-|\/)(0?[1-9]|[1-2]\d))|((0?[13-9]|1[0-2])(-|\/)30)|((0?[13578]|1[02])(-|\/)31)$/;
+    return re.test(str);
+}
+//不能为空
+function isBlank(str){
+    var re=/^\s*$/;
+    return re.test(str);
+}
+
+
+function YanZheng(id){
+    return document.getElementById(id);
+}
+function chkInt(){
+    if(!isBlank(YanZheng("idInt").value)){
+        if(!isInt(YanZheng("idInt").value)){
+            YanZheng("idIntPrompt").style.color="red";
+            YanZheng("idIntPrompt").innerText="数量应为整数！";
+            return false;
+        }
+    }
+    YanZheng("idIntPrompt").style.color="black";
+    YanZheng("idIntPrompt").innerText="";
+    return true;
+}
+function chkSCData(){
+    if(!isBlank(YanZheng("idSCData").value)){
+        if(!isData(YanZheng("idSCData").value)){
+            YanZheng("idSCDataPrompt").style.color="red";
+            YanZheng("idSCDataPrompt").innerText="请输入日期格式！";
+            return false;
+        }
+    }
+    YanZheng("idSCDataPrompt").style.color="black";
+    YanZheng("idSCDataPrompt").innerText="";
+    return true;
+}
+function chkDQData(){
+    if(!isBlank(YanZheng("idDQData").value)){
+        if(!isData(YanZheng("idDQData").value)){
+            YanZheng("idDQDataPrompt").style.color="red";
+            YanZheng("idDQDataPrompt").innerText="请输入日期格式！";
+            return false;
+        }
+    }
+    YanZheng("idDQDataPrompt").style.color="black";
+    YanZheng("idDQDataPrompt").innerText="";
+    return true;
+}
+
+//更改食品信息
+    $('#resupdate').validate({
+		rules: {
+			uname: {
+				required: true,
+			},
+			upassword: {
+				required: true,
+			}
+			
+		},
+		messages: {
+			uname: {
+				required: "请自己修改验证规则，并在此输入提示内容",
+			},
+			upassword: {
+				required: "请自己修改验证规则，并在此输入提示内容",
+			}
+		},
+		submitHandler: function (form) {
+			addToDBResAdd($('#resupdate').attr("action"), $('#resupdate').serialize());
+		}
+	});
+	
+	function addToDBResAdd(url, data) {
+		$.ajax({
+			url : url,
+			type : "post",
+			data : data,
+			success : function(data) {
+				if (data.statusCode =="200") {
+					window.location.href="http://localhost:8080/auto/Restaurant_limit.html";
+					alert("商店更改已成功");
+				} else {
+					alert("add error!" + data.statusMsg);
+				}
+			},
+			error : function(data) {
+				alert(JSON.stringify(data));
+			}
+		})
+	}
+	
+	//注册食品信息
+		$('#food_form').validate({
+			rules: {
+				uname: {
+					required: true,
+				},
+				upassword: {
+					required: true,
+				}
+			},
+			messages: {
+				uname: {
+					required: "请自己修改验证规则，并在此输入提示内容",
+				},
+				upassword: {
+					required: "请自己修改验证规则，并在此输入提示内容",
+				}
+			},
+			submitHandler: function (form) {
+				addToDBfood_form($('#food_form').attr("action"), $('#food_form').serialize());
+			}
+		});
+		
+		function addToDBfood_form(url, data) {
+			$.ajax({
+				url : url,
+				type : "post",
+				data : data,
+				success : function(data) {
+					if (data.statusCode =="200") {
+						alert("食品注册成功！");
+						window.location.href="http://localhost:8080/auto/Restaurant_limit.html";
+					} else {
+						alert("add error!" + data.statusMsg);
+					}
+				},
+				error : function(data) {
+					alert(JSON.stringify(data));
+				}
+			})
+		}
+		//删除商店信息
+		$('#res_del').validate({
+				rules: {
+					uname: {
+						required: true,
+					},
+					upassword: {
+						required: true,
+					}
+					
+				},
+				messages: {
+					uname: {
+						required: "请自己修改验证规则，并在此输入提示内容",
+					},
+					upassword: {
+						required: "请自己修改验证规则，并在此输入提示内容",
+					}
+				},
+				submitHandler: function (form) {
+					addToDBResAdd($('#res_del').attr("action"), $('#res_del').serialize());
+				}
+			});
+			
+			function addToDBResAdd(url, data) {
+				$.ajax({
+					url : url,
+					type : "post",
+					data : data,
+					success : function(data) {
+						if (data.statusCode =="200") {
+							window.location.href="http://localhost:8080/auto/Restaurant_limit.html";
+							alert("商店已删除成功");
+						} else {
+							alert("add error!" + data.statusMsg);
+						}
+					},
+					error : function(data) {
+						alert(JSON.stringify(data));
+					}
+				})
+			}
+			
+			$('#food_form').validate({
+				rules: {
+					uname: {
+						required: true,
+					},
+					upassword: {
+						required: true,
+					}
+				},
+				messages: {
+					uname: {
+						required: "请自己修改验证规则，并在此输入提示内容",
+					},
+					upassword: {
+						required: "请自己修改验证规则，并在此输入提示内容",
+					}
+				},
+				submitHandler: function (form) {
+					addToDBfood_form($('#food_form').attr("action"), $('#food_form').serialize());
+				}
+			});
+			
+			function addToDBfood_form(url, data) {
+				$.ajax({
+					url : url,
+					type : "post",
+					data : data,
+					success : function(data) {
+						if (data.statusCode =="200") {
+							window.location.href="http://localhost:8080/auto/Restaurant_limit.html";
+							
+						} else {
+							alert("add error!" + data.statusMsg);
+						}
+					},
+					error : function(data) {
+						alert(JSON.stringify(data));
+					}
+				})
+			}
+			//删除食品信息
+			$('#food_del').validate({
+					rules: {
+						uname: {
+							required: true,
+						},
+						upassword: {
+							required: true,
+						}
+						
+					},
+					messages: {
+						uname: {
+							required: "请自己修改验证规则，并在此输入提示内容",
+						},
+						upassword: {
+							required: "请自己修改验证规则，并在此输入提示内容",
+						}
+					},
+					submitHandler: function (form) {
+						addToDBResAdd($('#food_del').attr("action"), $('#food_del').serialize());
+					}
+				});
+				
+				function addToDBResAdd(url, data) {
+					$.ajax({
+						url : url,
+						type : "post",
+						data : data,
+						success : function(data) {
+							if (data.statusCode =="200") {
+								window.location.href="http://localhost:8080/auto/Restaurant_limit.html";
+								alert("食品已删除成功");
+							} else {
+								alert("add error!" + data.statusMsg);
+							}
+						},
+						error : function(data) {
+							alert(JSON.stringify(data));
+						}
+					})
+				}
+				
+				 $("#logout").click(function(){
+					 deleteCookie("user_id");
+					 deleteCookie("user_name");
+					 deleteCookie("user_level");
+					 window.location.href = "http://localhost:8080/auto/login.html"
+						});
+				
+				/*  $("#wodeziliao").click(function(){
+					var ss=setCookie("user_name");
+					$.ajax({
+						url : "/auto/restaurant/getrestauRantByUname?uname"+ss,
+						type : "post",
+						success : function(data) {
+							if (data.statusCode =="200") {
+							$("#r_id").val(data.data.r_id);
+							$("#u_id").val(data.data.u_id);
+							$("#r_name").val(data.data.r_name);
+							$("#r_address").val(data.data.address);
+							$("#r_phone").val(data.data.r_phone);
+							} else {
+								alert("add error!" + data.statusMsg);
+							}
+						},
+						error : function(data) {
+							alert(JSON.stringify(data));
+						}
+					})
+						}); */
+		</script >
+</body>
+</html>

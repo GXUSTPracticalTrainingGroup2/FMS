@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="bs/js/jquery-3.3.1.main.js"></script>
+     <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <script src="bs/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/first_Layout.css"></link>
+        <link rel="stylesheet" href="css/Layout.css">
+
+    <title>美食网</title>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="bs/js/bootstrap.js"></script>
+</head>
+<body id="body">
+<div class="wrap" id="wrap">
+    <div id="header"></div>
+    <div class="main" id="main">
+        <h3 class="hh">注册</h3>
+        <div class="zhuce1" id="zhuce1">
+            <div class="col-md-4" id="zhuce">
+                <form id="res_regis" role="form" action="/auto/restaurant/restaurantAdd"  method="post">
+                    <div class="form-group">
+                        <label >用户ID</label>
+                        <input type="text" class="form-control" name="uid">
+                    </div>
+                    <div class="form-group">
+                        <label >商店地址</label>
+                        <input type="text" class="form-control"  name="address">
+                    </div>
+                    <div class="form-group">
+                        <label >商店名字</label>
+                        <input type="text" class="form-control" name="rname">
+                    </div>
+                    <div class="form-group">
+                        <label >商店电话</label>
+                        <input type="text" class="form-control" name="rphone">
+                    </div>
+                    <button type="submit" class="btn btn-default">提交</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="reset" class="btn btn-default">取消</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+	<script src="js/plugins/peity/jquery.peity.min.js"></script>
+	<script src="js/plugins/iCheck/icheck.min.js"></script>
+	<script src="js/demo/peity-demo.min.js"></script>
+	<script src="js/bootstrap-paginator.min.js"></script>
+	<script src="js/bootstrap-editable.js"></script>
+	<script src="js/bootstrap-table.js"></script>
+	<script src="js/bootstrap-table-zh-CN.js"></script>
+	<script src="js/bootstrap-table-editable.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/tools.js"></script>
+<script type="text/javascript">
+		$('#res_regis').validate({
+			rules: {
+				uname: {
+					required: true,
+				},
+				upassword: {
+					required: true,
+				}
+				
+			},
+			messages: {
+				uname: {
+					required: "请自己修改验证规则，并在此输入提示内容",
+				},
+				upassword: {
+					required: "请自己修改验证规则，并在此输入提示内容",
+				}
+			},
+			submitHandler: function (form) {
+				addToDBRegis($('#res_regis').attr("action"), $('#res_regis').serialize());
+			}
+		});
+		
+		function addToDBRegis(url, data) {
+			$.ajax({
+				url : url,
+				type : "post",
+				data : data,
+				success : function(data) {
+					if (data.statusCode =="200") {
+						window.location.href="http://localhost:8080/auto/Restaurant_Limit.html";
+						alert("商店注册");
+					} else {
+						alert("add error!" + data.statusMsg);
+					}
+				},
+				error : function(data) {
+					alert(JSON.stringify(data));
+				}
+			})
+		}
+		</script >
+</body>
+</html>

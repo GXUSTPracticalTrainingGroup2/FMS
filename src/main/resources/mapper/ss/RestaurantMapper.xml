@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ss.vv.ss.mapper.IRestaurantMapper">
+
+<resultMap type="com.ss.vv.ss.domain.Restaurant" id="restaurantmap">
+<id column="r_id" jdbcType="INTEGER" property="rid"/>
+<result column="r_name" jdbcType="VARCHAR" property="rname"></result>
+<result column="u_id" jdbcType="INTEGER" property="uid"></result>
+<result column="address" jdbcType="VARCHAR" property="address"></result>
+<result column="r_phone" jdbcType="VARCHAR" property="rphone"></result>
+<result column="stars" jdbcType="INTEGER" property="stars"></result>
+</resultMap>
+
+<!--  
+<resultMap type="com.ss.vv.ss.domain.Restaurant" id="restaurantNamemap">
+<id column="r_id" jdbcType="INTEGER" property="rId"/>
+<result column="r_name" jdbcType="VARCHAR" property="rName"></result>
+<result column="address" jdbcType="VARCHAR" property="address"></result>
+<result column="r_phone" jdbcType="VARCHAR" property="rPhone"></result>
+<result column="stars" jdbcType="INTEGER" property="stars"></result>
+</resultMap>	
+-->
+
+<sql id="ColumnList">
+r_id,r_name,address,r_phone,stars	
+</sql>
+
+<!--  -->
+<sql id="query_where">
+   			stars  &gt;= ${star}
+</sql>
+
+
+
+<!-- 商店注册（除了stars属性） -->
+<insert id="insert" useGeneratedKeys="true" keyProperty="entity.rid">
+insert into ${tableName}(u_id,address,r_phone,r_name) 
+values(#{entity.uid},#{entity.address},#{entity.rphone},#{entity.rname})
+</insert>
+
+<!--getRestaurant用户进入推荐页面-关键字查询相关店铺-主体版面显示店铺信息    -->
+<select id="getByName" parameterType="java.lang.String" resultMap="restaurantmap" >  
+    SELECT 		
+			   R_ID, 
+			   R_NAME, 
+               ADDRESS,  
+               R_PHONE,  
+               STARS  
+    FROM RESTAURANT_FORM  
+    WHERE R_NAME LIKE CONCAT('%',#{name},'%')
+</select> 
+
+<!--主体版面显示店铺信息 -->
+<select id="getById" parameterType="java.lang.Integer"  resultMap="restaurantmap">  
+    SELECT 		
+			   R_ID,  
+			   R_NAME,
+               ADDRESS,  
+               R_PHONE,  
+               STARS  
+    FROM ${tableName} 
+     WHERE R_ID = #{id}
+</select>
+
+
+<!--用户进入推荐页面-通过推荐系数按规定顺序查询店铺信息-主体版面显示店铺信息  &gt;=-->
+<select id="getByStar" parameterType="java.lang.Integer" resultMap="restaurantmap" >  
+    SELECT 		
+		R_ID,  
+		 R_NAME,
+         ADDRESS,  
+         R_PHONE,  
+         STARS  
+    FROM RESTAURANT_FORM 
+    WHERE STARS in 
+    <foreach collection="list" item="employeeId" index="index"
+            open="(" close=")" separator=",">
+             #{star}
+    </foreach>
+    ORDER BY STARS
+</select>
+
+<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select
+		count(r_id)
+		from ${tableName} 
+		<where>
+			<foreach collection="condition" index="key" item="value">
+				${value} ${key}
+			</foreach>
+		</where>
+	</select>
+	<!--通过用户名查找商店信息  -->
+	<select id="getByUname" parameterType="java.util.List" resultType="java.lang.String" resultMap="restaurantmap">
+		SELECT
+		U.*,R.*
+		FROM
+		user_form AS U
+		LEFT JOIN 
+		restaurant_form AS R
+		ON
+		U.u_id=R.u_id
+		where U.u_name=#{uname};
+	</select>
+	
+	
+<!-- 这部分为根据传递参数，自动生成SQL -->
+	<select id="getList" parameterType="java.util.Map" resultMap="restaurantmap">
+		select
+		<if test="field == null">
+			<include refid="ColumnList" />
+		</if>
+		<if test="field != null">
+			${field}
+		</if>
+		from ${tableName} 
+		<where>
+			<foreach collection="condition" index="key" item="value">
+				${value} ${key}
+			</foreach>
+		</where>
+		<if test="order != null">
+			order by ${order}
+		</if>
+		<if test="limit != 0">
+			<if test="offset != 0">
+				limit ${offset}, ${limit}
+			</if>
+			<if test="offset == 0">
+				limit ${limit}
+			</if>
+		</if>
+	</select>
+	
+	<select id="getListByStar" parameterType="java.util.Map" resultMap="restaurantmap">
+		select
+		<if test="field == null">
+			<include refid="ColumnList" />
+		</if>
+		<if test="field != null">
+			${field}
+		</if>
+		from RESTAURANT_FORM 
+		<where>
+			<foreach collection="condition" index="key" item="value">
+				${value} ${key}
+			</foreach>
+		</where>
+		<where>
+		<include refid="query_where"></include>
+		</where>
+		<if test="order != null">
+			order by ${order}
+		</if>
+		<if test="limit != 0">
+			<if test="offset != 0">
+				limit ${offset}, ${limit}
+			</if>
+			<if test="offset == 0">
+				limit ${limit}
+			</if>
+		</if>
+	</select>
+	<delete id="deleteByAId" parameterType="String">
+    delete from attribute_form where a_id=#{aid}
+    </delete>
+    <delete id="deleteById" parameterType="String" >
+    delete from restaurant_form where r_id=#{rid} 
+    </delete>
+	<update id="Update" parameterType="com.ss.vv.ss.domain.Restaurant">
+    update restaurant_form set restaurant_form.u_id=#{uid},restaurant_form.r_name=#{rname},restaurant_form.address=#{address},restaurant_form.r_phone=#{rphone} where restaurant_form.r_id=#{rid} and restaurant_form.u_id=#{uid}
+    </update>
+    <update id="foodUpdate" parameterType="com.ss.vv.ss.domain.Attribute">
+    update attribute_form set attribute_form.a_name=#{aname},attribute_form.price=#{price},attribute_form.count=#{count},attribute_form.weight=#{weight} where attribute_form.a_id=#{aid}
+    </update>
+</mapper>

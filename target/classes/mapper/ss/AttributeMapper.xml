@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ss.vv.ss.mapper.IAttributeMapper">
+<resultMap id="attributeResultMap" type="com.ss.vv.ss.domain.Attribute">
+		<id column="a_name" jdbcType="VARCHAR" property="aname" />
+		<result column="exp_date" jdbcType="DATE" property="expDate" />
+		<result column="pro_date" jdbcType="DATE" property="proDate" />
+		<result column="a_id" jdbcType="INTEGER" property="aid" />
+		<result column="price" jdbcType="FLOAT" property="price"/>
+		<result column="count" jdbcType="INTEGER" property="count"/>
+		<result column="weight" jdbcType="FLOAT" property="weight"/>
+	</resultMap>
+	
+	
+	<resultMap type="com.ss.vv.ss.domain.Attribute" id="Attributemap">
+<id column="a_id" jdbcType="INTEGER" property="aid"/>
+<result column="count" jdbcType="INTEGER" property="count"></result>
+<result column="price" jdbcType="FLOAT" property="price"></result>
+<result column="weight" jdbcType="FLOAT" property="weight"></result>
+<result column="a_name" jdbcType="VARCHAR" property="aname"></result>
+<result column="exp_date" jdbcType="DATE" property="expDate"></result>
+<result column="pro_date" jdbcType="DATE" property="proDate"></result>
+</resultMap>
+
+<resultMap id="AttributeWithRestaurantResultMap" type="com.ss.vv.ss.domain.Attribute">
+        <!--由于继承了OrderResultMap 所以这里就不用再写order表的信息了-->
+        <!--用户表信息-->
+         <id column="a_id" jdbcType="INTEGER" property="aid"/>
+<result column="count" jdbcType="INTEGER" property="count"></result>
+<result column="price" jdbcType="FLOAT" property="price"></result>
+<result column="weight" jdbcType="FLOAT" property="weight"></result>
+<result column="a_name" jdbcType="VARCHAR" property="aname"></result>
+<result column="exp_date" jdbcType="DATE" property="expDate"></result>
+<result column="pro_date" jdbcType="DATE" property="proDate"></result>
+   <association property="restaurant" javaType="com.ss.vv.ss.domain.Restaurant" autoMapping="true">
+   <result column="stars" jdbcType="INTEGER" property="stars"></result>
+   <result column="r_name" jdbcType="VARCHAR" property="rname"></result>
+   <result column="address" jdbcType="VARCHAR" property="address"></result>
+     </association>
+</resultMap>
+	
+	<sql id="ColumnList">
+a_name,exp_date,pro_date,a_id,price,count,weight
+</sql>
+<!-- 用户注册 -->
+<insert id="insert" useGeneratedKeys="true" keyProperty="entity.aid">
+insert into ${tableName}(r_id,count,price,weight,a_name,exp_date,pro_date) 
+values(#{entity.rid},#{entity.count},#{entity.price},#{entity.weight},#{entity.aname},#{entity.expDate},#{entity.proDate})
+</insert>
+
+<!--主体版面显示食品属性信息 -->
+<select id="getById" parameterType="java.lang.Integer" resultMap="attributeResultMap">  
+    SELECT 		
+			   A_NAME,
+			   EXP_DATE,  
+               PRO_DATE,  
+               A_ID,
+			   PRICE,
+			   COUNT,
+			   WEIGHT 
+    FROM ${tableName} 
+     WHERE A_ID = #{id}
+</select>
+
+<select id="getByRId" parameterType="java.lang.Integer" resultMap="attributeResultMap">  
+    SELECT 		
+			   A.A_NAME,
+			   A.EXP_DATE,  
+               A.PRO_DATE,  
+               A.A_ID,
+			   A.PRICE,
+			   A.COUNT,
+			   A.WEIGHT
+    FROM ATTRIBUTE_FORM A,
+		 FOOD_FORM F,
+		 RESTAURANT_FORM R
+    WHERE	R.R_ID = F.R_ID AND F.A_ID = A.A_ID	AND	R.R_ID = #{rId}  
+</select> 
+
+<!--用户进入推荐页面-主体版面显示店铺信息，用价格作为形参，-->
+<select id="getByPrice" parameterType="java.lang.Float" resultMap="AttributeWithRestaurantResultMap">  
+    SELECT 
+  A.A_ID,
+    A.count,
+    A.price,
+    A.weight,
+    A.exp_Date,
+    A.pro_Date,
+    A.a_name,
+    R.r_name,
+    R.stars,
+     R.address
+    FROM ATTRIBUTE_FORM A,
+		 RESTAURANT_FORM R
+    WHERE 	A.r_id = R.r_id   AND A.price=#{price}
+</select>
+
+<!--用户进入推荐页面-通过价格查询同种食物在不同店铺的价格-主体版面显示店铺信息，用食物名字作为形参，-->
+<select id="getByAname" parameterType="java.lang.String" resultMap="AttributeWithRestaurantResultMap">  
+    SELECT 
+    A.A_ID,
+    A.count,
+    A.price,
+    A.weight,
+    A.exp_Date,
+    A.pro_Date,
+    A.a_name,
+    R.r_name,
+     R.stars,
+     R.address
+    FROM ATTRIBUTE_FORM A,
+		 RESTAURANT_FORM R
+    WHERE 	A.r_id = R.r_id  AND A.a_name LIKE CONCAT('%',#{aname},'%')
+</select>
+
+
+<!--用户进入推荐页面-通过价格查询同种食物在不同店铺的价格-主体版面显示店铺信息，用商店名字作为形参，-->
+<select id="getByRname" parameterType="java.lang.String" resultMap="AttributeWithRestaurantResultMap">  
+    SELECT 
+    A.A_ID,
+    A.count,
+    A.price,
+    A.weight,
+    A.exp_Date,
+    A.pro_Date,
+    A.a_name,
+    R.r_name,
+     R.stars,
+     R.address
+    FROM ATTRIBUTE_FORM A,
+		 RESTAURANT_FORM R
+    WHERE 	A.r_id = R.r_id AND R.R_NAME LIKE CONCAT('%',#{rname},'%')
+</select>
+
+<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select
+		count(a_id)
+		from ${tableName} 
+		<where>
+			<foreach collection="condition" index="key" item="value">
+				${value} ${key}
+			</foreach>
+		</where>
+	</select>
+	
+	
+<!-- 这部分为根据传递参数，自动生成SQL -->
+	<select id="getList" parameterType="java.util.Map" resultMap="attributeResultMap">
+		select
+		<if test="field == null">
+			<include refid="ColumnList" />
+		</if>
+		<if test="field != null">
+			${field}
+		</if>
+		from ${tableName} 
+		<where>
+			<foreach collection="condition" index="key" item="value">
+				${value} ${key}
+			</foreach>
+		</where>
+		<if test="order != null">
+			order by ${order}
+		</if>
+		<if test="limit != 0">
+			<if test="offset != 0">
+				limit ${offset}, ${limit}
+			</if>
+			<if test="offset == 0">
+				limit ${limit}
+			</if>
+		</if>
+	</select>
+	
+	<select id="getListByNameNPrice" parameterType="java.util.Map" resultMap="attributeResultMap">
+		select
+		<if test="field == null">
+			<include refid="ColumnList" />
+		</if>
+		<if test="field != null">
+			${field}
+		</if>
+		from RESTAURANT_FORM
+			 ATTRIBUTE_FORM 
+		<where>
+			<foreach collection="condition" index="key" item="value">
+				${value} ${key}
+			</foreach>
+		</where>
+		WHERE
+		price  &gt;= ${price}
+		AND
+		R_NAME LIKE CONCAT('%',#{name},'%')
+		<if test="order != null">
+			order by ${order}
+		</if>
+		<if test="limit != 0">
+			<if test="offset != 0">
+				limit ${offset}, ${limit}
+			</if>
+			<if test="offset == 0">
+				limit ${limit}
+			</if>
+		</if>
+	</select>
+</mapper>
